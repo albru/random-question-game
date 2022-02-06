@@ -1,10 +1,46 @@
+@import '~antd/dist/antd.css';
+
 .App {
-  text-align: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 30px;
+    flex-direction: column;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.App-giphy {
+    display: flex;
+    width: 500px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.App-randomizer-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App-button-wrapper {
+    margin-top: 30px;
+}
+
+.App-randomizer-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.App-randomizer {
+    display: flex;
 }
 
 @media (prefers-reduced-motion: no-preference) {
