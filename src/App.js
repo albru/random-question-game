@@ -109,12 +109,11 @@ function App() {
                     <div className={"App-giphy"}>
                         {state.active ?
                             <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :
-                            state.currentParticipant &&
                             <>
                                 <Typography.Title
-                                    level={3}>{`Кто у микрофона: ${state.currentParticipant}`}</Typography.Title>
+                                    level={3}>{`Кто у микрофона: ${state.currentParticipant || 'Пока никого'}`}</Typography.Title>
                                 <Typography.Title
-                                    level={3}>{`Вопрос: ${state.currentQuestion}`}</Typography.Title>
+                                    level={3}>{`Вопрос: ${state.currentQuestion || 'Пока нет вопроса'}`}</Typography.Title>
                             </>
                         }
                     </div>
@@ -122,7 +121,7 @@ function App() {
             </Row>
 
             <div className={'App-button-wrapper'}>
-                <Button disabled={state.active} size={"large"} type={"primary"} onClick={runGame}>Найти жертву</Button>
+                <Button disabled={state.active} size={"large"} type={"primary"} onClick={runGame}>СТАРТ</Button>
             </div>
         </div>
     );
