@@ -42,7 +42,7 @@ const PEOPLE = [
 ];
 
 const MAX_ROUNDS = 20
-const DELAY = 200
+const DELAY = 300
 
 let isRunning = 0
 
@@ -60,7 +60,7 @@ function App() {
             .map(({value}) => value)
     }
 
-    const setTimers = async (arr, ms) => {
+    const setTimers = async (arr) => {
         let promise;
         let participantArrIndex = 0
 
@@ -68,7 +68,7 @@ function App() {
             promise = new Promise(res => {
                 setTimeout(() => {
                     res(item)
-                }, ms)
+                }, DELAY)
             })
         })
 
@@ -80,14 +80,14 @@ function App() {
         })
     }
 
-    const shakeData = async (ms = DELAY) => {
+    const shakeData = async () => {
         const shuffledQuestions = shuffle(QUESTIONS)
         const shuffledParticipants = shuffle(PEOPLE)
-        return await Promise.all([setTimers(shuffledQuestions, ms), setTimers(shuffledParticipants, ms)])
+        return await Promise.all([setTimers(shuffledQuestions), setTimers(shuffledParticipants)])
     }
 
-    const randomizer = async (ms = 200) => {
-        const [currentQuestion, currentParticipant] = await shakeData(ms)
+    const randomizer = async () => {
+        const [currentQuestion, currentParticipant] = await shakeData()
 
         setState({currentQuestion, currentParticipant, active: true})
         isRunning++
@@ -126,13 +126,13 @@ function App() {
                     <div className={"App-giphy"}>
                         {state.active ?
                             <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :
-                            state.currentParticipant && <>
-                                <Typography.Title
-                                    level={3}>{`Кто у микрофона: ${state.currentParticipant}`}</Typography.Title>
-                                <Typography.Title
-                                    level={3}>{`Вопрос: ${state.currentQuestion}`}</Typography.Title>
-                            </>
-
+                            state.currentParticipant &&
+                                <>
+                                    <Typography.Title
+                                        level={3}>{`Кто у микрофона: ${state.currentParticipant}`}</Typography.Title>
+                                    <Typography.Title
+                                        level={3}>{`Вопрос: ${state.currentQuestion}`}</Typography.Title>
+                                </>
                         }
                     </div>
                 </Col>
