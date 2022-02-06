@@ -43,7 +43,7 @@ const PEOPLE = [
 
 const MAX_ROUNDS = 27
 const DELAY_BORDER = 15
-const DELAY_STEP = 50
+const DELAY_STEP = 60
 const DELAY_BASIC = 100
 
 let delay = 100
@@ -65,7 +65,6 @@ function App() {
 
     const setTimers = async (arr) => {
         let promise;
-        let participantArrIndex = 0
 
         arr.forEach((item) => {
             promise = new Promise(res => {
@@ -77,8 +76,9 @@ function App() {
 
         return await promise.then(() => {
             if (Array.isArray(arr[0])) {
-                return arr[participantArrIndex][0]
+                return arr[0][0]
             }
+
             return arr[0]
         })
     }
