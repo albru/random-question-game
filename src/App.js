@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import {Typography, Col, Row} from 'antd';
+import {Typography, Col, Row, Card} from 'antd';
 
 import {QuestionsList} from "./components/questions-list/QuestionsList";
 import {Participants} from "./components/participants/Participants";
@@ -41,15 +41,17 @@ const PEOPLE = [
     'Вася 22'
 ];
 
-const MAX_ROUNDS = 27
+const getRounds = () => Math.floor(Math.random() * (30 - 25 + 1)) + 25;
 const DELAY_BORDER = 15
-const DELAY_STEP = 60
+const DELAY_STEP = 50
 const DELAY_BASIC = 100
 
+let maxRounds = getRounds()
 let delay = 100
 let isRunning = 0
 
 function App() {
+    console.log(maxRounds)
     const [state, setState] = useState({
         currentQuestion: null,
         currentParticipant: null,
@@ -73,7 +75,7 @@ function App() {
             setState({currentQuestion, currentParticipant, active: true})
             isRunning++
 
-            if (isRunning < MAX_ROUNDS) {
+            if (isRunning < maxRounds) {
                 if (isRunning > DELAY_BORDER) {
                     delay = delay + DELAY_STEP
                 }
@@ -82,6 +84,7 @@ function App() {
             } else {
                 setState({currentQuestion, currentParticipant, active: false})
                 delay = DELAY_BASIC
+                maxRounds = getRounds()
             }
         } catch (err) {
             console.log(err)
@@ -98,23 +101,23 @@ function App() {
             <Typography.Title>Игра "Случайный вопрос случайному коллеге"</Typography.Title>
 
             <Row>
-                <Col span={4} offset={1}>
+                <Col span={4} offset={2}>
                     <QuestionsList questions={QUESTIONS} current={state.currentQuestion}/>
                 </Col>
                 <Col span={10} offset={1}>
                     <Participants participants={PEOPLE} current={state.currentParticipant}/>
                 </Col>
 
-                <Col span={6} offset={1} flex={1}>
+                <Col span={7}>
                     <div className={"App-giphy"}>
                         {state.active ?
                             <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :
-                            <>
+                            <Card title="Результат игры" >
                                 <Typography.Title
                                     level={3}>{`Кто у микрофона: ${state.currentParticipant || 'Пока никого'}`}</Typography.Title>
                                 <Typography.Title
                                     level={3}>{`Вопрос: ${state.currentQuestion || 'Пока нет вопроса'}`}</Typography.Title>
-                            </>
+                            </Card>
                         }
                     </div>
                 </Col>
