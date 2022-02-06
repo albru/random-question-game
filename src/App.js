@@ -56,37 +56,20 @@ function App() {
         active: false
     });
 
-    const shuffle = (arr) => {
-        return arr
-            .map(value => ({value, sort: Math.random()}))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({value}) => value)
-    }
-
     const setTimers = async (arr) => {
-        let promise;
-
-        arr.forEach(() => {
-            promise = new Promise(res => {
-                setTimeout(() => {
-                    res()
-                }, delay)
-            })
+        return await new Promise(res => {
+            setTimeout(() => {
+                res()
+            }, delay)
+        }).then(() => {
+            const id = Math.floor(Math.random() * (arr.length))
+            return arr[id]
         })
-
-        return await promise.then(() => arr[0])
-    }
-
-    const shakeData = async () => {
-        const shuffledQuestions = shuffle(QUESTIONS)
-        const shuffledParticipants = shuffle(PEOPLE)
-        return await Promise.all([setTimers(shuffledQuestions), setTimers(shuffledParticipants)])
     }
 
     const randomizer = async () => {
         try {
-            const [currentQuestion, currentParticipant] = await shakeData()
-
+            const [currentParticipant, currentQuestion] = await Promise.all([setTimers(PEOPLE), setTimers(QUESTIONS)])
             setState({currentQuestion, currentParticipant, active: true})
             isRunning++
 
