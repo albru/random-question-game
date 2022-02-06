@@ -84,26 +84,22 @@ function App() {
     }
 
     const randomizer = async () => {
-       try {
-           const [currentQuestion, currentParticipant] = await shakeData()
+        const [currentQuestion, currentParticipant] = await shakeData()
 
-           setState({currentQuestion, currentParticipant, active: true})
-           isRunning++
+        setState({currentQuestion, currentParticipant, active: true})
+        isRunning++
 
-           return new Promise(() => {
-               if (isRunning < MAX_ROUNDS) {
-                   if(isRunning > DELAY_BORDER) {
-                       delay = delay + DELAY_STEP
-                   }
-                   randomizer()
-               } else {
-                   setState({currentQuestion, currentParticipant, active: false})
-                   delay = DELAY_BASIC
-               }
-           })
-       } catch (err) {
-           console.log(err)
-       }
+        if (isRunning < MAX_ROUNDS) {
+            if (isRunning > DELAY_BORDER) {
+                delay = delay + DELAY_STEP
+            }
+
+            await randomizer()
+        } else {
+            setState({currentQuestion, currentParticipant, active: false})
+            delay = DELAY_BASIC
+        }
+
     }
 
     const runGame = async () => {
