@@ -87,22 +87,22 @@ function App() {
     }
 
     const randomizer = async () => {
-        const [currentQuestion, currentParticipant] = await shakeData()
+       try {
+           const [currentQuestion, currentParticipant] = await shakeData()
 
-        setState({currentQuestion, currentParticipant, active: true})
-        isRunning++
+           setState({currentQuestion, currentParticipant, active: true})
+           isRunning++
 
-        return new Promise((res) => {
-            setTimeout(() => {
-                if (isRunning < MAX_ROUNDS) {
-                    randomizer()
-                } else {
-                    setState({currentQuestion, currentParticipant, active: false})
-                }
-
-                res()
-            }, 0)
-        })
+           return new Promise(() => {
+               if (isRunning < MAX_ROUNDS) {
+                   randomizer()
+               } else {
+                   setState({currentQuestion, currentParticipant, active: false})
+               }
+           })
+       } catch (err) {
+           console.log(err)
+       }
     }
 
     const runGame = async () => {
@@ -127,12 +127,12 @@ function App() {
                         {state.active ?
                             <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :
                             state.currentParticipant &&
-                                <>
-                                    <Typography.Title
-                                        level={3}>{`Кто у микрофона: ${state.currentParticipant}`}</Typography.Title>
-                                    <Typography.Title
-                                        level={3}>{`Вопрос: ${state.currentQuestion}`}</Typography.Title>
-                                </>
+                            <>
+                                <Typography.Title
+                                    level={3}>{`Кто у микрофона: ${state.currentParticipant}`}</Typography.Title>
+                                <Typography.Title
+                                    level={3}>{`Вопрос: ${state.currentQuestion}`}</Typography.Title>
+                            </>
                         }
                     </div>
                 </Col>
