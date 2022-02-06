@@ -41,9 +41,12 @@ const PEOPLE = [
     'Вася 22'
 ];
 
-const MAX_ROUNDS = 20
-const DELAY = 300
+const MAX_ROUNDS = 27
+const DELAY_BORDER = 15
+const DELAY_STEP = 50
+const DELAY_BASIC = 100
 
+let delay = 100
 let isRunning = 0
 
 function App() {
@@ -64,11 +67,11 @@ function App() {
         let promise;
         let participantArrIndex = 0
 
-        arr.forEach((item, i) => {
+        arr.forEach((item) => {
             promise = new Promise(res => {
                 setTimeout(() => {
                     res(item)
-                }, DELAY)
+                }, delay)
             })
         })
 
@@ -95,9 +98,13 @@ function App() {
 
            return new Promise(() => {
                if (isRunning < MAX_ROUNDS) {
+                   if(isRunning > DELAY_BORDER) {
+                       delay = delay + DELAY_STEP
+                   }
                    randomizer()
                } else {
                    setState({currentQuestion, currentParticipant, active: false})
+                   delay = DELAY_BASIC
                }
            })
        } catch (err) {
