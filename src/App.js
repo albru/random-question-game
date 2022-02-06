@@ -66,21 +66,15 @@ function App() {
     const setTimers = async (arr) => {
         let promise;
 
-        arr.forEach((item) => {
+        arr.forEach(() => {
             promise = new Promise(res => {
                 setTimeout(() => {
-                    res(item)
+                    res()
                 }, delay)
             })
         })
 
-        return await promise.then(() => {
-            if (Array.isArray(arr[0])) {
-                return arr[0][0]
-            }
-
-            return arr[0]
-        })
+        return await promise.then(() => arr[0])
     }
 
     const shakeData = async () => {
