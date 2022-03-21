@@ -8,7 +8,7 @@ export const Participants = ({participants, current}) => {
         const participantsArr = []
 
         arr.forEach((item, i) => {
-            if (i && Number.isInteger((i / 10))) {
+            if (i && Number.isInteger((i / 15))) {
                 id++
             }
 

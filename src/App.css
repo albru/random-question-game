@@ -5,8 +5,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 30px;
     flex-direction: column;
+    padding: 20px;
 }
 
 .App-logo {
@@ -30,13 +30,23 @@
 }
 
 .App-button-wrapper {
-    margin-top: 30px;
+    margin: 30px;
 }
 
 .App-randomizer-wrapper {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.App-modal {
+    min-width: 600px;
+}
+
+.App-success {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .App-randomizer {
@@ -62,6 +72,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.App-title {
+    margin-top: 30px;
 }
 
 @keyframes App-logo-spin {
