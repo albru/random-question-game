@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+li.ant-list-item {
+    padding: 0 !important;
+}
+
 .App {
     text-align: center;
     display: flex;

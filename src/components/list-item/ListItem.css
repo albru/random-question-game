@@ -1,0 +1,41 @@
+.active {
+    background-color: #5CB134;
+    color: #ffff !important;
+    border-radius: 10px;
+}
+
+.text {
+    padding: 10px;
+    max-width: 200px;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.buttonContainer {
+    margin-left: auto;
+}
+
+.button {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.editIcon {
+    color: #1890ff !important;
+}
+
+.deleteIcon {
+    color: #f5222d !important;
+}
+
+.saveIcon {
+    color: #52c41a !important;
+}
+
+.input {
+    width: 65% !important;
+}
