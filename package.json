@@ -2,7 +2,7 @@
   "name": "itmeister",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/albru/random-question-game",
+  "homepage": "https://albru.github.io/random-question-game",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.2",
