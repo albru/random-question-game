@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/albru/random-question-game/static/css/main.c1bb832b.css",
-    "main.js": "/albru/random-question-game/static/js/main.cd2b6543.js",
-    "static/js/787.97bd71ff.chunk.js": "/albru/random-question-game/static/js/787.97bd71ff.chunk.js",
-    "index.html": "/albru/random-question-game/index.html",
-    "main.c1bb832b.css.map": "/albru/random-question-game/static/css/main.c1bb832b.css.map",
-    "main.cd2b6543.js.map": "/albru/random-question-game/static/js/main.cd2b6543.js.map",
-    "787.97bd71ff.chunk.js.map": "/albru/random-question-game/static/js/787.97bd71ff.chunk.js.map"
+    "main.css": "/random-question-game/static/css/main.c1bb832b.css",
+    "main.js": "/random-question-game/static/js/main.3c4d0d2e.js",
+    "static/js/787.97bd71ff.chunk.js": "/random-question-game/static/js/787.97bd71ff.chunk.js",
+    "index.html": "/random-question-game/index.html",
+    "main.c1bb832b.css.map": "/random-question-game/static/css/main.c1bb832b.css.map",
+    "main.3c4d0d2e.js.map": "/random-question-game/static/js/main.3c4d0d2e.js.map",
+    "787.97bd71ff.chunk.js.map": "/random-question-game/static/js/787.97bd71ff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c1bb832b.css",
-    "static/js/main.cd2b6543.js"
+    "static/js/main.3c4d0d2e.js"
   ]
 }
