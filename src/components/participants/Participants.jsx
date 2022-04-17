@@ -42,6 +42,10 @@ export const Participants = ({participants, current, setState}) => {
     }
 
     const handleAdd = (value) => {
+        if(!value) {
+            return;
+        }
+
         setState(prev => {
             const copy = [...prev.participants]
             copy.push(value)

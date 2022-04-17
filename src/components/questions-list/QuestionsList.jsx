@@ -24,6 +24,10 @@ export const QuestionsList = ({questions, current, setState}) => {
     }
 
     const handleAdd = (value) => {
+        if(!value) {
+            return;
+        }
+
         setState(prev => {
             const copy = [...prev.questions]
             copy.push(value)
