@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/albru/random-question-game/static/css/main.c1bb832b.css",
+    "main.js": "/albru/random-question-game/static/js/main.bcbaddf2.js",
+    "static/js/787.97bd71ff.chunk.js": "/albru/random-question-game/static/js/787.97bd71ff.chunk.js",
+    "index.html": "/albru/random-question-game/index.html",
+    "main.c1bb832b.css.map": "/albru/random-question-game/static/css/main.c1bb832b.css.map",
+    "main.bcbaddf2.js.map": "/albru/random-question-game/static/js/main.bcbaddf2.js.map",
+    "787.97bd71ff.chunk.js.map": "/albru/random-question-game/static/js/787.97bd71ff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1bb832b.css",
+    "static/js/main.bcbaddf2.js"
+  ]
+}
