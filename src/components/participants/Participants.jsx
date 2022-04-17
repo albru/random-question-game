@@ -1,7 +1,9 @@
-import {Button, List, Row} from "antd";
+import {List, Row} from "antd";
 
 import './Participants.css'
 import {ListItem} from "../list-item/ListItem";
+import {AddItem} from "../add-item/AddItem";
+import {nanoid} from "nanoid";
 
 export const Participants = ({participants, current, setState}) => {
     const splitParticipants = (arr) => {
@@ -39,6 +41,15 @@ export const Participants = ({participants, current, setState}) => {
         })
     }
 
+    const handleAdd = (value) => {
+        setState(prev => {
+            const copy = [...prev.participants]
+            copy.push(value)
+
+            return {...prev, participants: copy}
+        })
+    }
+
     const splicedParticipants = splitParticipants(participants);
 
     return (
@@ -48,11 +59,11 @@ export const Participants = ({participants, current, setState}) => {
                     return <>
                         <List
                             className={'list'}
-                            header={<div>Участники:</div>}
+                            header={<div className={'participantsHeader'}>Участники:  <AddItem onOk={handleAdd}/></div>}
                             bordered
                             dataSource={el}
-                            key={i}
-                            renderItem={(item, i) => (
+                            key={nanoid()}
+                            renderItem={(item) => (
                                 <ListItem
                                     text={item}
                                     active={item === current}

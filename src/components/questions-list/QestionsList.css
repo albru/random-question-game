@@ -2,3 +2,18 @@
     background-color: #5CB134;
     color: #ffff !important;
 }
+
+.addIcon {
+    color: #5CB134!important;
+}
+
+.addButton {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.questionsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

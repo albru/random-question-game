@@ -1,5 +1,5 @@
-import {useState} from 'react'
-import {Typography, Col, Row, Card, Modal} from 'antd';
+import {useEffect, useState} from 'react'
+import {Typography, Col, Row, Card, Modal, notification} from 'antd';
 
 import {QuestionsList} from "./components/questions-list/QuestionsList";
 import {Participants} from "./components/participants/Participants";
@@ -97,6 +97,16 @@ function App() {
         setState(prev => ({...prev, showModal: !prev.showModal}))
     }
 
+    useEffect(() => {
+        notification.info({
+            message: 'Внимание',
+            duration: 8,
+            description:
+                'При закрытии страницы или перезагрузке все изменения будут утеряны'
+        });
+    }, []);
+
+
     return (
         <div className="App">
             <img alt="logo" src={"https://upload.wikimedia.org/wikipedia/commons/d/d4/Leroy_Merlin.svg"}/>
@@ -104,45 +114,44 @@ function App() {
                 <Typography.Title level={2}>R A N D O M I Z E R _ 2.0</Typography.Title>
             </div>
 
-            <Row>
-                <Col span={7}>
+            <Row className={'Wrapper'}>
+                <Col span={4} offset={1}>
                     <QuestionsList questions={state.questions} current={state.currentQuestion} setState={setState}/>
                 </Col>
-                <Col span={15} offset={1}>
+                <Col span={10} offset={1}>
                     <Participants participants={state.participants} current={state.currentParticipant} setState={setState}/>
                 </Col>
 
-                {/*<Col span={3}>*/}
-                {/*    <div className={"App-giphy"}>*/}
-                {/*        {state.active ?*/}
-                {/*            <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :*/}
-                {/*            <>*/}
-                {/*                <Card><Typography.Title level={2}>Нажмите "Старт", чтобы котики начали*/}
-                {/*                    работу</Typography.Title></Card>*/}
-                {/*                <Modal title="Результат игры" visible={state.showModal}*/}
-                {/*                       className={"App-modal"}*/}
-                {/*                       onCancel={closeModal}*/}
-                {/*                       footer={[<Button onClick={closeModal} key="back">*/}
-                {/*                           Закрыть*/}
-                {/*                       </Button>]}>*/}
-                {/*                    <div className={"App-success"}>*/}
-                {/*                        <img src={"https://c.tenor.com/7f-45XKAZGgAAAAC/jimmy.gif"}/>*/}
-                {/*                    </div>*/}
-                {/*                    <Typography.Title*/}
-                {/*                        level={3}>{state.currentParticipant}</Typography.Title>*/}
-                {/*                    <Typography.Title*/}
-                {/*                        level={3}>{state.currentQuestion}</Typography.Title>*/}
-                {/*                </Modal>*/}
-                {/*            </>*/}
-                {/*        }*/}
+                <Col span={8}>
+                    <div className={"App-giphy"}>
+                        {state.active ?
+                            <img alt={"test"} src={'https://c.tenor.com/GbewYC1zD8UAAAAd/cats-keyboard.gif'}/> :
+                            <>
+                                <Card><Typography.Title level={2}>Нажмите "Старт", чтобы котики начали
+                                    работу</Typography.Title></Card>
+                                <div className={'App-button-wrapper'}>
+                                    <Button loading={state.active} size={"large"} onClick={runGame}>СТАРТ</Button>
+                                </div>
+                                <Modal title="Результат игры" visible={state.showModal}
+                                       className={"App-modal"}
+                                       onCancel={closeModal}
+                                       footer={[<Button onClick={closeModal} key="back">
+                                           Закрыть
+                                       </Button>]}>
+                                    <div className={"App-success"}>
+                                        <img src={"https://c.tenor.com/7f-45XKAZGgAAAAC/jimmy.gif"}/>
+                                    </div>
+                                    <Typography.Title
+                                        level={3}>{state.currentParticipant}</Typography.Title>
+                                    <Typography.Title
+                                        level={3}>{state.currentQuestion}</Typography.Title>
+                                </Modal>
+                            </>
+                        }
 
-                {/*    </div>*/}
-                {/*</Col>*/}
+                    </div>
+                </Col>
             </Row>
-
-            <div className={'App-button-wrapper'}>
-                <Button loading={state.active} size={"large"} onClick={runGame}>СТАРТ</Button>
-            </div>
         </div>
     );
 }

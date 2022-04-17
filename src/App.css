@@ -82,6 +82,12 @@ li.ant-list-item {
     margin-top: 30px;
 }
 
+.Wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

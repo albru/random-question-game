@@ -6,3 +6,9 @@
 .list {
     min-width: 200px;
 }
+
+.participantsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

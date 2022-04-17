@@ -35,7 +35,7 @@ export const ListItem = ({active, text, onDelete, onSave}) => {
                     size={'small'}
                     defaultValue={ref.current}
                     onChange={handleInput}/>
-                : <Typography className={`${active ? 'active' : ''} text`}>{text}</Typography>}
+                : <Typography editable className={`${active ? 'active' : ''} text`}>{text}</Typography>}
             <div className={'buttonContainer'}>
                 <Button
                     onClick={handleEditButton}
